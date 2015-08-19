@@ -1,7 +1,7 @@
 # Site settings
 title: Felipe Trova - Front-End
 email: felipee.trova@gmail.com
-url: https://www.felipetrova.com.br
+url: https://felipetrova.com.br
 description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 
 # Color settings (hex-codes without the leading hash-tag)
@@ -16,7 +16,7 @@ footer:
   copyright: Felipe Trova
   location: Location
   social: Siga-me!
-  credits: Credits ?
+  credits: #Credits ?
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
@@ -33,8 +33,8 @@ social:
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: 3481 Melrose Place
-  - line: Beverly Hills, CA 90210
+  - line: Indaiatuba
+  - line: SP-Brasil
 
 # Credits content
 credits: 'Feito com <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> e <span class="love">❤</span></p>'
