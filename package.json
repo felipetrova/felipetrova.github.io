@@ -1,0 +1,25 @@
+{
+  "name": "blog-felipetrova",
+  "version": "0.0.1",
+  "description": "Novo site/blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe Trova",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "jeet": "~6.1.2",
+    "rupture": "~0.6.1",
+    "gulp-plumber": "~0.6.6",
+    "gulp-concat": "~2.4.3",
+    "gulp-uglify": "~1.1.0",
+    "gulp": "~3.8.10",
+    "gulp-stylus": "~2.0.0",
+    "autoprefixer-stylus": "~0.5.0",
+    "grunt": "~0.4.5",
+    "kouto-swiss": "~0.11.6",
+    "gulp-imagemin": "~2.1.0",
+    "browser-sync": "~2.0.0-rc1"
+  }
+}
