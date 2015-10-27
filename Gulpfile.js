@@ -1,92 +1,99 @@
-var gulp        = require('gulp'),
-	plumber     = require('gulp-plumber'),
-	browserSync	= require('browser-sync'),
-	stylus      = require('gulp-stylus'),
-	uglify      = require('gulp-uglify'),
-	concat      = require('gulp-concat'),
-	jeet        = require('jeet'),
-	rupture     = require('rupture'),
-	koutoSwiss  = require('kouto-swiss'),
-	prefixer    = require('autoprefixer-stylus'),
-	imagemin    = require('gulp-imagemin'),
-	cp          = require('child_process');
+var gulp = require('gulp'),
+    browserSync = require('browser-sync'),
+    sass = require('gulp-ruby-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    minifycss = require('gulp-minify-css'),
+    rename = require('gulp-rename'),
+    postcss = require('gulp-postcss'),
+    imageResize = require('gulp-image-resize'),
+    parallel = require("concurrent-transform"),
+    os = require("os"),
+    cp = require('child_process');
 
 var messages = {
-	jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
+  jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
 };
 
 /**
-* Monta o site do Jekyll
-*/
+ * Build the Jekyll Site
+ */
 gulp.task('jekyll-build', function (done) {
-	browserSync.notify(messages.jekyllBuild);
-	return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-		.on('close', done);
+    browserSync.notify(messages.jekyllBuild);
+    return cp.spawn('jekyll', ['build', '--config=_config.yml'], {stdio: 'inherit'})
+        .on('close', done);
 });
 
 /**
-* Refaz o site e atualiza a página
-*/
-gulp.task('jekyll-rebuild', ['jekyll-build'], function(){
-	browserSync.reload();
+ * Rebuild Jekyll & do page reload
+ */
+gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+    browserSync.reload();
 });
 
 /**
-* Espera até que o jekyll-build seja executado e então levanta o
-* servidor utilizando o _site como pasta raiz
-*/
-gulp.task('browser-sync', ['jekyll-build'], function(){
-	browserSync({
-		server: {
-			baseDir: '_site'
-		}
-	});
+ * Wait for jekyll-build, then launch the Server
+ */
+gulp.task('browser-sync', ['styles', 'jekyll-build'], function() {
+  browserSync({
+    server: {
+      baseDir: '_site'
+    },
+    startPath: "/index.html"
+  });
+});
+
+// To support opacity in IE 8
+
+var opacity = function(css) {
+  css.eachDecl(function(decl, i) {
+    if (decl.prop === 'opacity') {
+      decl.parent.insertAfter(i, {
+        prop: '-ms-filter',
+        value: '"progid:DXImageTransform.Microsoft.Alpha(Opacity=' + (parseFloat(decl.value) * 100) + ')"'
+      });
+    }
+  });
+};
+
+/**
+ * Compile files from sass into both assets/css (for live injecting) and site (for future jekyll builds)
+ */
+gulp.task('styles', function() {
+  return sass('_scss/', { style: 'expanded' })
+    .pipe(autoprefixer({browsers: ['last 2 versions', 'Firefox ESR', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1']}))
+    .pipe(postcss([opacity]))
+    .pipe(gulp.dest('assets/css'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    .pipe(gulp.dest('assets/css'));
 });
 
 /**
-* Compilando o Stylus
-*/
-gulp.task('stylus', function(){
-	gulp.src('src/styl/main.styl')
-	.pipe(plumber())
-	.pipe(stylus({
-		use:[koutoSwiss(), prefixer(), jeet(),rupture()],
-		compress: true
-	}))
-	.pipe(gulp.dest('_site/assets/css/'))
-	.pipe(browserSync.reload({stream:true}))
-	.pipe(gulp.dest('assets/css'))
+ * Automatically resize post feature images and turn them into thumbnails
+ */
+gulp.task("thumbnails", function () {
+  gulp.src("assets/images/hero/*.{jpg,png}")
+    .pipe(parallel(
+      imageResize({ width : 350 }),
+      os.cpus().length
+    ))
+    .pipe(gulp.dest("assets/images/thumbnail"));
 });
 
 /**
-* Minificando e concatenando o JS
-*/
-gulp.task('js', function(){
-	return gulp.src('src/js/**/*.js')
-	.pipe(plumber())
-	.pipe(concat('main.js'))
-	.pipe(uglify())
-	.pipe(gulp.dest('assets/js'))
+ * Watch scss files for changes & recompile
+ * Watch html/md files, run jekyll & reload BrowserSync
+ */
+gulp.task('watch', function() {
+  gulp.watch('_scss/**/*.scss', ['styles']);
+  gulp.watch('assets/images/hero/*.{jpg,png}', ['thumbnails']);
+  gulp.watch(['*.html', '*.txt', 'about/**', '_posts/*.markdown', 'assets/javascripts/**/**.js', 'assets/images/**', 'assets/fonts/**', '_layouts/**','_includes/**', 'assets/css/**'], ['jekyll-rebuild']);
 });
 
 /**
-* Otimizando imagens
-*/
-gulp.task('imagemin', function() {
-    return gulp.src('src/img/**/*')
-        .pipe(plumber())
-        .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-        .pipe(gulp.dest('assets/img/'));
-});
+ * Default task, running just `gulp` will compile the sass,
+ * compile the jekyll site, launch BrowserSync & watch files.
+ */
+gulp.task('default', ['styles', 'thumbnails', 'browser-sync', 'watch'], function() {
 
-/**
-* Vigiando os arquivos com watch e tarefa default
-*/
-gulp.task('watch', function(){
-	gulp.watch('src/styl/**/*.styl', ['stylus']);
-	gulp.watch('src/js/**/*.js', ['js']);
-	gulp.watch('src/img/**/*.{jpg,png,gif}', ['imagemin']);
-	gulp.watch(['_config.yml', 'index.html', '_includes/*.html', '_layouts/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
-
-gulp.task('default', ['js', 'stylus', 'imagemin', 'browser-sync', 'watch']);

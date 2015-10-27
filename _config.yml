@@ -1,44 +1,52 @@
-# Site settings
-title: Felipe Trova - Front-End
-email: felipee.trova@gmail.com
-url: https://felipetrova.com.br
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 
-# Color settings (hex-codes without the leading hash-tag)
-color:
-  # primary: 18bc9c #80B3FF
-  primary: 8cc63f #80B3FF
-  secondary: 2c3e50 #FD6E8A
-  secondary-dark: 233140 #A2122F
+# Syntax highlighting
+markdown:            redcarpet
+highlighter:         pygments
 
-# Footer settings
-footer:
-  copyright: Felipe Trova
-  location: Location
-  social: Siga-me!
-  credits: #Credits ?
+# Permalinks
+permalink:           /:title
+relative_permalinks: true
 
-# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
-social:
-  - title: twitter
-    url: http://twitter.com/felipetrova
-  - title: facebook
-    url: https://www.facebook.com/ftweb
-  # - title: stack-overflow
-  #   url: http://stackoverflow.com/questions/tagged/jekyll
-  # - title: bitbucket 
-  #   url: http://bitbucket.org/felipe_trova
-  - title: github
-    url: http://github.com/felipetrova
+# Setup
+timezone:            America/Sao_Paulo # eg. Asia/Kathmandu
+locale:              pt_br # eg. en_us
+name:				         Felipe Trova
+title:               Felipe Trova - Front-End Developer
+tagline:             'tagline'
+description:         'Felipe Trova - Front-End Developer. Projetos e posts sobre HTML(5), CSS(3), JS, Git, Pré-processadores, Tasks Runners e outras tecnologias'
+url:                 http://felipetrova.com.br
+rss:                 rss feed url
+baseurl:             '/'
+baseurl_posts_img:   '/assets/images/posts/'
+baseurl_featured_img: '/assets/images/hero/'
+baseurl_featured_thumbnail: '/assets/images/thumbnail/'
+baseurl_javascripts: '/assets/javascripts/'
+icon:                '/assets/img/icon.png' # /assets/img/icon.png [best 300px X 300px]
+disqus:              felipetrova # get it on https://disqus.com/admin/
 
-# Postal address (add as many lines as necessary)
-address:
-  - line: Indaiatuba
-  - line: SP-Brasil
+author:
+  name:           	 Felipe Trova
+  url:            	 http://felipetrova.github.io/
+  facebook:          ftweb
+  twitter:           felipetrova
+  google_plus:       felipetrova
+  linkedin:          felipetrova
+  dribbble:          felipetrova
+  pinterest:         
+  kiva:              
 
-# Credits content
-credits: 'Feito com <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> e <span class="love">❤</span></p>'
+fb_admins:           felipetrova
+fb_appid:            1617829778476979
 
-# Build settings
-markdown: kramdown
-permalink: pretty
+# Server
+destination:      	 ./_site
+exclude:          	 [".editorconfig", ".gitignore", "bower.json", "composer.json", "CONTRIBUTING.md", "CNAME", "LICENSE", "Gruntfile.js", "package.json", "node_modules", "README.md", "sass", "haml"]
+port:             	 9001
+
+defaults:
+  -
+    scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "default"
