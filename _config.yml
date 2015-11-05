@@ -14,7 +14,7 @@ name:				         Felipe Trova
 title:               Felipe Trova - Front-End Developer
 tagline:             'tagline'
 description:         'Felipe Trova - Front-End Developer. Projetos e posts sobre HTML(5), CSS(3), JS, Git, Pré-processadores, Tasks Runners e outras tecnologias'
-url:                 http://felipetrova.github.io/
+url:                 http://felipetrova.github.io
 rss:                 rss feed url
 baseurl:             '/'
 baseurl_posts_img:   '/assets/images/posts/'
@@ -26,7 +26,7 @@ disqus:              felipetrova # get it on https://disqus.com/admin/
 
 author:
   name:           	 Felipe Trova
-  url:            	 http://felipetrova.github.io/
+  url:            	 http://felipetrova.github.io
   facebook:          ftweb
   twitter:           felipetrova
   google_plus:       felipetrova
