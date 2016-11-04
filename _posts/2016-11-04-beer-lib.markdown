@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "BeerLib - Um projeto para estudos"
+date:   2016-11-04 15:20:00
+last_modified_at:  2016-11-05 21:30:00
+excerpt: "Um simples biblioteca para listagem de cervejas."
+categories: projetos 
+tags: [projetos, open-source , ]
+image:
+  feature: beer-lib.jpg
+  topPosition: -50px
+bgContrast: dark
+bgGradientOpacity: darker
+syntaxHighlighter: no
+---
+
+BeerLib.
+
+Devagar vou criando novamente o hábito de escrever e vou me soltando. Quem sabe os próximos posts não sejam algo mais técnicos. :)
+
+Estou um tanto quanto atrasado? Errado? Se tiver qualquer dúvida ou crítica, por favor, comente ;)
