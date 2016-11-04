@@ -7,12 +7,6 @@ My personal website with Jekyll, Gulp, Sass and Browsersync.
 
 ### Installation
 
-First of all, install the dependencies to run this boilerplate.
-
-- [NodeJS](http://nodejs.org/)
-- [GulpJS](http://gulpjs.com/)
-
-
 ```sh
 # install jekyll globally
 $ gem install jekyll bundler
