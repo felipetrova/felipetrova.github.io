@@ -14,8 +14,21 @@ bgGradientOpacity: darker
 syntaxHighlighter: no
 ---
 
-BeerLib.
+BeerLib. Novembro.
+<br>
+Esse foi o projeto e mês que resolvi voltar a estudar e atualizar o blog. Na verdade nunca parei de estudar, apenas ficava na leitura de uma coisa ou outra, era raro pegar algo e aplicar o mesmo.
 
-Devagar vou criando novamente o hábito de escrever e vou me soltando. Quem sabe os próximos posts não sejam algo mais técnicos. :)
+Como nunca foi meu forte ter ideias para projetos, sempre me esbarrava nessa questão. Até que pensei: "Gosto muito de cerveja. E se eu montar uma *lib* e listar as cervejas que já tomei, com minhas observações sobre elas e tal?". Fechou, era isso que precisava fazer. Sim, sei que é algo simples, mas se não começar do simples, imagine de algo complexo e difícil?
 
-Estou um tanto quanto atrasado? Errado? Se tiver qualquer dúvida ou crítica, por favor, comente ;)
+Nos "tempos livre" sempre leio os posts e textos que a galera compartilha e vi que o `Vue.js` estava em ascensão, e ai decidir usar ele como base para estudos no projeto.
+Também sabia que estava um tanto quanto atrasado nas funcionalidades e processadores de CSS. Estão, porque não estudar sobre isso também? Ai lembrei que o grande [Felipe Fialho](https://twitter.com/lfeh) tem um boilerplate FODA ([Kratos Boilerplate](https://github.com/LFeh/kratos-boilerplate)) e decidi usar ele, afinal, não precisa reinventar a roda, apenas focar no que estava atrasado.
+
+Assim, dei *start* no projeto e vocês podem conferir o mesmo no [GitHub](https://github.com/felipetrova/beer-lib). Sim, ainda estou começando ele, preciso ajustar umas coisas no layout, adicionar novas funcionalidades e assim vai, mas, já foi um belo inicio, principalmente pra quem estava um tanto quanto parado na aplicação dos estudos e novas tecnologias.
+
+Depois que atualizar o projeto, crio um novo post, falando mais sobre a estrutura, com imagens e mais detalhes.
+
+Em paralelo com esse projeto, estou dando *start* em um outro, agora com *React*. Mas enfim, isso é assunto para um novo post. Sim, vai rolar novos posts, pelo menos vou tentar e me esforçar bastante!
+
+Devagar vou criando novamente o hábito de escrever e vou me soltando. Quem sabe os próximos posts não sejam algo mais técnicos. :smile:
+
+Estou um tanto quanto atrasado? Errado? Se tiver qualquer dúvida ou crítica, por favor, comente :laughing:
