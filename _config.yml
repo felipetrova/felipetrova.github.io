@@ -2,6 +2,9 @@
 # Syntax highlighting
 markdown:            kramdown
 highlighter:         rouge
+gems:
+  - jemoji
+
 
 # Permalinks
 permalink:           pretty
